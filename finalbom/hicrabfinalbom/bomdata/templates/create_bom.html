@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create BOM</title>
+    <link rel="stylesheet" href="{% static 'records/css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'homepage' %}">Back to Home</a>
+        <h1>Create BOM</h1>
+
+        <!-- Form to create a new BOM -->
+        <h2>Create a New BOM</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ bom_form.as_p }}
+            <button type="submit" name="create_bom">Create BOM</button>
+        </form>
+
+        <!-- Form to create a new Component for the BOM -->
+        <h2>Add Component to BOM</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ component_form.as_p }}
+            <button type="submit" name="add_component">Add Component</button>
+        </form>
+
+        <!-- Form to enter Specifications for the Component -->
+        <h2>Add Specification to Component</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ specification_form.as_p }}
+            <button type="submit" name="add_specification">Add Specification</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+       <!-- Display existing BOMs and their components -->
+     <!--   <h2>Existing BOMs and Components</h2>-->
+      <!--   <ul>-->
+      <!--   {% for bom in bom_list %}-->
+       <!--      <li>{{ bom.name }}-->
+        <!--         <ul>-->
+        <!--         {% for component in bom.components.all %}-->
+         <!--            <li>{{ component.name }}-->
+         <!--                <ul>-->
+         <!--                {% for spec in component.specifications.all %}-->
+         <!--                    <li>{{ spec.specification }}: {{ spec.make }}, {{ spec.purpose }}, {{ spec.quality }}, Price: {{ spec.price }}, Total: {{ spec.total }}</li>-->
+          <!--               {% endfor %}-->
+         <!--                </ul>-->
+         <!--            </li>-->
+           <!--      {% endfor %}-->
+        <!--         </ul>-->
+         <!--    </li>-->
+     <!--   {% endfor %}-->
+    <!--     </ul>-->
+    </div>
+</body>
+</html>
